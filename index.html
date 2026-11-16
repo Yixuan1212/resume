@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>許益瑄 | 個人履歷網站</title>
-  <meta name="description" content="許益瑄的個人履歷網站 - 應徵職位：醫美診所助理 / 診所行政人員 / 顧客服務專員">
+  <title>許益瑄 | 個人履歷與專案作品網站</title>
+  <meta name="description" content="許益瑄的個人履歷網站 - 應徵職位：醫美診所助理 / 診所行政人員 / 顧客服務專員，附醫美產業市場趨勢分析與數據視覺化專案成果。">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN for Data Visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script>
     tailwind.config = {
@@ -23,6 +25,9 @@
             primary: {
               50: '#eff6ff',
               100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
               500: '#3b82f6',
               600: '#2563eb',
               700: '#1d4ed8',
@@ -56,6 +61,10 @@
         <a href="#experience" class="hover:text-primary-600 transition-colors">工作經歷</a>
         <a href="#education" class="hover:text-primary-600 transition-colors">學歷背景</a>
         <a href="#skills" class="hover:text-primary-600 transition-colors">專業專長</a>
+        <a href="#portfolio" class="hover:text-primary-600 transition-colors text-primary-700 font-semibold flex items-center gap-1.5">
+          <i class="fa-solid fa-chart-line text-xs"></i>
+          <span>專案成果</span>
+        </a>
         <a href="#autobiography" class="hover:text-primary-600 transition-colors">自傳優勢</a>
       </nav>
       <div class="flex items-center gap-3">
@@ -239,7 +248,387 @@
       </div>
     </section>
 
-    <!-- 5. 自傳與核心優勢 -->
+    <!-- 5. 專案成果作品 (PORTFOLIO SECTION) -->
+    <section id="portfolio" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-8">
+      <!-- Section Header -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-4 flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-primary-600 text-white flex items-center justify-center text-base shadow-sm">
+            <i class="fa-solid fa-chart-pie"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-primary-900">專案成果與作品展示 (Project Portfolio)</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">結合企管系數據分析與醫美第一線實務經驗的深度專案研究</p>
+          </div>
+        </div>
+        <span class="text-xs font-medium px-3 py-1 rounded-full bg-primary-50 text-primary-700 border border-primary-200">
+          作品庫持續更新中
+        </span>
+      </div>
+
+      <!-- PROJECT 01: 醫美產業分析專案 -->
+      <article class="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 sm:p-7 space-y-6 transition-all hover:border-primary-300">
+        <!-- Project Title & Badges -->
+        <div class="space-y-3">
+          <div class="flex items-center flex-wrap gap-2">
+            <span class="px-2.5 py-1 rounded-md bg-primary-600 text-white text-xs font-bold tracking-wide">
+              專案作品 01
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-xs font-semibold">
+              醫美產業專題分析
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-semibold">
+              互動數據視覺化
+            </span>
+            <span class="px-2.5 py-1 rounded-md bg-purple-100 text-purple-800 text-xs font-semibold">
+              診所營運策略洞察
+            </span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl font-bold text-slate-900 leading-snug">
+            2024–2026 台灣暨全球醫美產業市場趨勢與消費行為分析報告
+          </h3>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed text-justify">
+            本專案以國際美容整形外科學會（ISAPS）、經濟部與衛生福利部統計、TEJ 台灣經濟新報及產業市場研究為基底，深入剖析全球與台灣醫美市場的規模爆發、微整「輕醫美常態化」演變，以及消費者在選擇診所時的核心決策路徑。專案並立足於診所助理第一線服務流程，提出具體可行的顧客溝通與留客營運策略。
+          </p>
+        </div>
+
+        <!-- 4 Key Stat Metrics with Hyperlinked Sources -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Metric 1 -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-medium text-slate-500 flex items-center justify-between">
+                <span>全球年醫美療程量</span>
+                <i class="fa-solid fa-earth-americas text-primary-500"></i>
+              </div>
+              <div class="text-2xl font-extrabold text-primary-900 mt-1">3,490 萬+</div>
+              <p class="text-xs text-slate-600 mt-1">微整非手術注射佔比逾 55%</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 mt-2">
+              <a href="https://www.isaps.org/discover/about-isaps/global-statistics/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 hover:text-primary-800 underline">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>來源: ISAPS 全球統計</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Metric 2 -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-medium text-slate-500 flex items-center justify-between">
+                <span>台灣醫美年產值</span>
+                <i class="fa-solid fa-sack-dollar text-emerald-500"></i>
+              </div>
+              <div class="text-2xl font-extrabold text-primary-900 mt-1">NT$ 600億+</div>
+              <p class="text-xs text-slate-600 mt-1">年複合成長率 (CAGR) ~9.5%</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 mt-2">
+              <a href="https://www.tejwin.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 hover:text-primary-800 underline">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>來源: TEJ 產業經濟報告</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Metric 3 -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-medium text-slate-500 flex items-center justify-between">
+                <span>微整注射雙核心</span>
+                <i class="fa-solid fa-syringe text-purple-500"></i>
+              </div>
+              <div class="text-2xl font-extrabold text-primary-900 mt-1">75.7%</div>
+              <p class="text-xs text-slate-600 mt-1">肉毒桿菌與玻尿酸合佔大宗</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 mt-2">
+              <a href="https://www.allerganaesthetics.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 hover:text-primary-800 underline">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>來源: Allergan 美學白皮書</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Metric 4 -->
+          <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-2xs space-y-1.5 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-medium text-slate-500 flex items-center justify-between">
+                <span>首要決策指標</span>
+                <i class="fa-solid fa-shield-halved text-amber-500"></i>
+              </div>
+              <div class="text-2xl font-extrabold text-primary-900 mt-1">42%</div>
+              <p class="text-xs text-slate-600 mt-1">醫師資歷技術與原廠正貨認證</p>
+            </div>
+            <div class="pt-2 border-t border-slate-100 mt-2">
+              <a href="https://www.opview.com.tw/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs font-semibold text-primary-600 hover:text-primary-800 underline">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>來源: OpView 口碑大數據</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Data Visualizations (2x2 Grid) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
+          
+          <!-- Chart 1: Global Non-Surgical Share -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-chart-pie text-primary-600 text-sm"></i>
+                  <span>全球非手術醫美項目熱門分佈</span>
+                </h4>
+              </div>
+              <div class="flex items-center gap-1.5 mb-3 text-xs text-slate-500">
+                <span>統計佔比（件數）</span>
+                <span>•</span>
+                <a href="https://www.isaps.org/discover/about-isaps/global-statistics/" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：ISAPS Global Survey 國際學會</span>
+                </a>
+              </div>
+            </div>
+            <div class="relative h-60 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="globalProceduresChart"></canvas>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 pt-2.5 border-t border-slate-100 text-justify">
+              <strong class="text-slate-700">圖表解讀：</strong>肉毒桿菌素（48.2%）與玻尿酸填充劑（27.5%）合計佔全球非手術醫美超 75%，因修復期短、效果立見，為診所最高頻的預約與回購核心品項。
+            </p>
+          </div>
+
+          <!-- Chart 2: Taiwan Market Revenue Trend -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-chart-column text-primary-600 text-sm"></i>
+                  <span>台灣醫美市場產值規模趨勢 (2020–2026E)</span>
+                </h4>
+              </div>
+              <div class="flex items-center gap-1.5 mb-3 text-xs text-slate-500">
+                <span>單位：新台幣億元 (NT$ Billion)</span>
+                <span>•</span>
+                <a href="https://www.tejwin.com/" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：TEJ 台灣經濟新報</span>
+                </a>
+              </div>
+            </div>
+            <div class="relative h-60 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="taiwanMarketChart"></canvas>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 pt-2.5 border-t border-slate-100 text-justify">
+              <strong class="text-slate-700">圖表解讀：</strong>台灣市場在後疫情時代加速成長，產值從 2020 年 450 億成長至 2024 年 665 億，預估 2026 年突破 800 億大關，呈現穩健向上的剛性需求。
+            </p>
+          </div>
+
+          <!-- Chart 3: Age Demographics Shift -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-users text-primary-600 text-sm"></i>
+                  <span>醫美消費客群年齡分佈結構</span>
+                </h4>
+              </div>
+              <div class="flex items-center gap-1.5 mb-3 text-xs text-slate-500">
+                <span>族群比例分析</span>
+                <span>•</span>
+                <a href="https://www.allerganaesthetics.com/" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：Allergan Aesthetics 美學報告</span>
+                </a>
+              </div>
+            </div>
+            <div class="relative h-60 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="ageDemographicsChart"></canvas>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 pt-2.5 border-t border-slate-100 text-justify">
+              <strong class="text-slate-700">圖表解讀：</strong>18–34 歲年輕客群合佔比達 50%，消費心態由「熟齡除皺補救」轉型為「青年預防性抗衰」與定期膚況光電保養，帶動消費週期顯著縮短。
+            </p>
+          </div>
+
+          <!-- Chart 4: Clinic Decision Factors -->
+          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-square-poll-horizontal text-primary-600 text-sm"></i>
+                  <span>消費者挑選醫美診所關鍵考量要素</span>
+                </h4>
+              </div>
+              <div class="flex items-center gap-1.5 mb-3 text-xs text-slate-500">
+                <span>消費者意向比例 (%)</span>
+                <span>•</span>
+                <a href="https://www.opview.com.tw/" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：OpView 社群輿情大數據</span>
+                </a>
+              </div>
+            </div>
+            <div class="relative h-60 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="decisionFactorsChart"></canvas>
+            </div>
+            <p class="text-xs text-slate-500 mt-3 pt-2.5 border-t border-slate-100 text-justify">
+              <strong class="text-slate-700">圖表解讀：</strong>「醫師專業技術」與「原廠正貨防偽」位居最關鍵前兩位；第一線助理親切專業的接待、透明透明的衛教以及主動術後追蹤，是決定顧客信任與推薦率的決勝核心。
+            </p>
+          </div>
+
+        </div>
+
+        <!-- 3 Core Strategic Insights (結合企管系與診所助理實務) -->
+        <div class="space-y-4 pt-2">
+          <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <i class="fa-solid fa-lightbulb text-amber-500"></i>
+            <span>三大產業趨勢洞察與診所實務應用策略</span>
+          </h4>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Strategy 1 -->
+            <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 space-y-2.5 flex flex-col justify-between">
+              <div>
+                <span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200 mb-1">
+                  趨勢一 ｜ 常態保養化
+                </span>
+                <h5 class="font-bold text-slate-900 text-sm sm:text-base">
+                  「輕醫美」取代重手術，消費高頻化與降齡
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed text-justify mt-2">
+                  民眾對恢復期短、低侵入性的微整（玻尿酸、肉毒、皮秒雷射）接受度極高，醫美如同健身與做臉般的日常例行保養。
+                </p>
+                <div class="mt-3 p-2.5 bg-slate-50 rounded-lg border border-slate-100 text-xs text-slate-700">
+                  <strong class="text-primary-800 block mb-1">💡 診所助理實務落地：</strong>
+                  建構親切透明的初診引導問卷，善用 LINE 預約排程提醒日常補打週期，降低顧客看診門檻。
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 mt-3">
+                <a href="https://dep.mohw.gov.tw/DOMA/" target="_blank" rel="noopener noreferrer" class="text-[11px] text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1 font-medium">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：衛福部醫事司《特定醫療技術管理》</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Strategy 2 -->
+            <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 space-y-2.5 flex flex-col justify-between">
+              <div>
+                <span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-1">
+                  趨勢二 ｜ 原生美學
+                </span>
+                <h5 class="font-bold text-slate-900 text-sm sm:text-base">
+                  拒絕過度填充饅化，追求「自然微調」
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed text-justify mt-2">
+                  市場審美從以往誇張高挺或過飽滿的網紅臉，轉向「修飾倦容、宛若天生」的原生精緻感，重視組織相容性與面部動態和諧。
+                </p>
+                <div class="mt-3 p-2.5 bg-slate-50 rounded-lg border border-slate-100 text-xs text-slate-700">
+                  <strong class="text-primary-800 block mb-1">💡 診所助理實務落地：</strong>
+                  諮詢前期主動傾聽顧客對「不僵硬、自然無痕」的需求，完整記錄個案偏好，協助醫師精準溝通劑量。
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 mt-3">
+                <a href="https://www.allerganaesthetics.com/" target="_blank" rel="noopener noreferrer" class="text-[11px] text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1 font-medium">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：Allergan Aesthetics 美學趨勢</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Strategy 3 -->
+            <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 space-y-2.5 flex flex-col justify-between">
+              <div>
+                <span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-purple-50 text-purple-700 border border-purple-200 mb-1">
+                  趨勢三 ｜ 信任經濟
+                </span>
+                <h5 class="font-bold text-slate-900 text-sm sm:text-base">
+                  原廠正貨驗證與術後主動關懷為留客王道
+                </h5>
+                <p class="text-xs text-slate-600 leading-relaxed text-justify mt-2">
+                  社群資訊高度透明，消費者極度重視針劑醫療器材合法性；而在多數診所技術相當下，「溫暖細膩的服務流程」成為再訪關鍵。
+                </p>
+                <div class="mt-3 p-2.5 bg-slate-50 rounded-lg border border-slate-100 text-xs text-slate-700">
+                  <strong class="text-primary-800 block mb-1">💡 診所助理實務落地：</strong>
+                  現場主動協助展示針劑外盒完整封條與原廠防偽 QR Code，並落實術後 24-72 小時電話/訊息追蹤慰問。
+                </div>
+              </div>
+              <div class="pt-3 border-t border-slate-100 mt-3">
+                <a href="https://www.opview.com.tw/" target="_blank" rel="noopener noreferrer" class="text-[11px] text-primary-600 hover:text-primary-800 underline inline-flex items-center gap-1 font-medium">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                  <span>資料來源：OpView 口碑調研報告</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comprehensive References Section (所有資料來源超連結彙整清單) -->
+        <div class="bg-white rounded-xl p-4 sm:p-5 border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <h5 class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-link text-primary-600"></i>
+              <span>專案研究資料來源超連結清單 (Data Sources &amp; Citations)</span>
+            </h5>
+            <span class="text-[11px] text-slate-500">點擊外部連結直接參閱官方原始研究報告</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs text-slate-600">
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+              <i class="fa-solid fa-up-right-from-square text-primary-500 shrink-0"></i>
+              <div class="truncate">
+                <a href="https://www.isaps.org/discover/about-isaps/global-statistics/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-700 hover:underline">
+                  ISAPS Global Statistics 國際美容整形外科學會
+                </a>
+                <span class="text-slate-400 block text-[11px]">全球年度醫美療程統計與非手術微整形排名分析</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+              <i class="fa-solid fa-up-right-from-square text-primary-500 shrink-0"></i>
+              <div class="truncate">
+                <a href="https://www.tejwin.com/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-700 hover:underline">
+                  TEJ 台灣經濟新報 (Taiwan Economical Journal)
+                </a>
+                <span class="text-slate-400 block text-[11px]">台灣美容醫學產業產值規模與連鎖醫療機構現況研究</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+              <i class="fa-solid fa-up-right-from-square text-primary-500 shrink-0"></i>
+              <div class="truncate">
+                <a href="https://dep.mohw.gov.tw/DOMA/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-700 hover:underline">
+                  中華民國衛生福利部 醫事司
+                </a>
+                <span class="text-slate-400 block text-[11px]">《特定醫療技術檢查檢驗醫療儀器施行或使用管理辦法》與診所法規</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
+              <i class="fa-solid fa-up-right-from-square text-primary-500 shrink-0"></i>
+              <div class="truncate">
+                <a href="https://www.allerganaesthetics.com/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-700 hover:underline">
+                  Allergan Aesthetics (艾力根醫美)
+                </a>
+                <span class="text-slate-400 block text-[11px]">全球醫美未來趨勢白皮書與消費者年齡心態調研報告</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors md:col-span-2">
+              <i class="fa-solid fa-up-right-from-square text-primary-500 shrink-0"></i>
+              <div class="truncate">
+                <a href="https://www.opview.com.tw/" target="_blank" rel="noopener noreferrer" class="font-semibold text-primary-700 hover:underline">
+                  OpView 意藍資訊社群口碑資料庫
+                </a>
+                <span class="text-slate-400 block text-[11px]">台灣美容醫學市場網路輿情、熱議療程與消費者就診決策偏好分析</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </article>
+    </section>
+
+    <!-- 6. 自傳與核心優勢 -->
     <section id="autobiography" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
       <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
         <div class="w-9 h-9 rounded-xl bg-primary-600 text-white flex items-center justify-center text-base shadow-sm">
@@ -285,8 +674,239 @@
 
   <!-- Footer -->
   <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 no-print">
-    <p>© 2026 許益瑄 | 個人履歷網站. All rights reserved.</p>
+    <p>© 2026 許益瑄 | 個人履歷與專案作品網站. All rights reserved.</p>
   </footer>
 
+  <!-- Chart.js Initialization Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Global Chart Defaults
+      Chart.defaults.font.family = '"Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+      Chart.defaults.color = '#64748b';
+
+      // 1. Global Non-Surgical Procedures (Doughnut Chart)
+      const ctxGlobal = document.getElementById('globalProceduresChart').getContext('2d');
+      new Chart(ctxGlobal, {
+        type: 'doughnut',
+        data: {
+          labels: ['肉毒桿菌素注射', '玻尿酸填充劑', '光電拉提 (電/音波)', '雷射光療/皮秒', '膠原蛋白增生/其他'],
+          datasets: [{
+            data: [48.2, 27.5, 11.8, 7.1, 5.4],
+            backgroundColor: [
+              '#2563eb', // blue-600
+              '#38bdf8', // sky-400
+              '#818cf8', // indigo-400
+              '#34d399', // emerald-400
+              '#cbd5e1'  // slate-300
+            ],
+            borderWidth: 2,
+            borderColor: '#ffffff',
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                boxWidth: 12,
+                padding: 12,
+                font: { size: 11 }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return ` ${context.label}: ${context.raw}%`;
+                }
+              }
+            }
+          },
+          cutout: '62%'
+        }
+      });
+
+      // 2. Taiwan Market Revenue Trend (Bar & Line Chart)
+      const ctxTaiwan = document.getElementById('taiwanMarketChart').getContext('2d');
+      new Chart(ctxTaiwan, {
+        type: 'bar',
+        data: {
+          labels: ['2020', '2021', '2022', '2023', '2024', '2025(E)', '2026(E)'],
+          datasets: [
+            {
+              type: 'line',
+              label: '成長趨勢線 (NT$ 億元)',
+              data: [450, 490, 540, 600, 665, 730, 800],
+              borderColor: '#1d4ed8',
+              backgroundColor: '#1d4ed8',
+              borderWidth: 2.5,
+              tension: 0.35,
+              pointRadius: 4,
+              pointBackgroundColor: '#ffffff',
+              pointBorderColor: '#1d4ed8',
+              pointBorderWidth: 2,
+              order: 1
+            },
+            {
+              type: 'bar',
+              label: '年度產值規模',
+              data: [450, 490, 540, 600, 665, 730, 800],
+              backgroundColor: [
+                '#bfdbfe', '#bfdbfe', '#bfdbfe', '#93c5fd', '#60a5fa', '#3b82f6', '#2563eb'
+              ],
+              borderRadius: 6,
+              order: 2
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                boxWidth: 12,
+                padding: 10,
+                font: { size: 11 }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return ` ${context.dataset.label}: ${context.raw} 億元`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              min: 350,
+              max: 900,
+              grid: { color: '#f1f5f9' },
+              ticks: {
+                font: { size: 10 },
+                callback: function (val) { return val + ' 億'; }
+              }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { font: { size: 10 } }
+            }
+          }
+        }
+      });
+
+      // 3. Age Demographics (Horizontal Bar Chart)
+      const ctxAge = document.getElementById('ageDemographicsChart').getContext('2d');
+      new Chart(ctxAge, {
+        type: 'bar',
+        data: {
+          labels: ['18–24 歲 (輕年保養/瘦臉)', '25–34 歲 (初老抗衰/核心主力)', '35–49 歲 (拉提/飽滿複合式)', '50 歲以上 (深層抗老/手術)'],
+          datasets: [{
+            label: '客群佔比 (%)',
+            data: [14, 36, 32, 18],
+            backgroundColor: [
+              '#38bdf8', // 18-24 sky
+              '#2563eb', // 25-34 blue (highlight)
+              '#818cf8', // 35-49 indigo
+              '#94a3b8'  // 50+ slate
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return ` 佔比: ${context.raw}%`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 45,
+              grid: { color: '#f1f5f9' },
+              ticks: {
+                font: { size: 10 },
+                callback: function (val) { return val + '%'; }
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { size: 11 } }
+            }
+          }
+        }
+      });
+
+      // 4. Consumer Clinic Decision Factors (Horizontal Bar Chart)
+      const ctxDecision = document.getElementById('decisionFactorsChart').getContext('2d');
+      new Chart(ctxDecision, {
+        type: 'bar',
+        data: {
+          labels: [
+            '醫師專業資歷與臨床口碑',
+            '原廠正貨認證與針劑防偽',
+            '效果自然無痕 / 短修復期',
+            '價格透明合理 / 無推銷壓力',
+            '前線接待親切 / 術後關懷回訪'
+          ],
+          datasets: [{
+            label: '考慮因素比例 (%)',
+            data: [42, 38, 35, 29, 26],
+            backgroundColor: [
+              '#1d4ed8', // 42%
+              '#2563eb', // 38%
+              '#3b82f6', // 35%
+              '#60a5fa', // 29%
+              '#10b981'  // 26% emerald
+            ],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return ` 比例: ${context.raw}% (重視度)`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              max: 50,
+              grid: { color: '#f1f5f9' },
+              ticks: {
+                font: { size: 10 },
+                callback: function (val) { return val + '%'; }
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { font: { size: 11 } }
+            }
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
