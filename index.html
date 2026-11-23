@@ -45,6 +45,88 @@
       body { background-color: white !important; }
       .print-shadow-none { box-shadow: none !important; }
     }
+
+    /* AI Chatbot Custom Animations & Styling */
+    @keyframes chatFabRadar {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.65), 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+      }
+      60% {
+        box-shadow: 0 0 0 16px rgba(37, 99, 235, 0), 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0), 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+      }
+    }
+
+    .animate-chat-glow {
+      animation: chatFabRadar 2.6s infinite ease-out;
+    }
+
+    @keyframes chatTypingBounce {
+      0%, 80%, 100% {
+        transform: translateY(0);
+        opacity: 0.4;
+      }
+      40% {
+        transform: translateY(-5px);
+        opacity: 1;
+      }
+    }
+
+    .typing-dot:nth-child(1) { animation: chatTypingBounce 1.2s infinite ease-in-out; }
+    .typing-dot:nth-child(2) { animation: chatTypingBounce 1.2s infinite ease-in-out 0.2s; }
+    .typing-dot:nth-child(3) { animation: chatTypingBounce 1.2s infinite ease-in-out 0.4s; }
+
+    /* Project Section Highlight Effect */
+    @keyframes projectGlowHighlight {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.8), 0 25px 50px -12px rgba(37, 99, 235, 0.35);
+        border-color: #2563eb;
+        background-color: rgba(239, 246, 255, 0.95);
+        transform: translateY(-2px);
+      }
+      25% {
+        box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.5), 0 25px 50px -12px rgba(37, 99, 235, 0.35);
+        border-color: #1d4ed8;
+      }
+      70% {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25), 0 15px 30px -10px rgba(37, 99, 235, 0.2);
+        border-color: #3b82f6;
+        background-color: rgba(239, 246, 255, 0.6);
+        transform: translateY(0);
+      }
+      100% {
+        box-shadow: none;
+        border-color: rgba(226, 232, 240, 0.8);
+        background-color: rgba(248, 250, 252, 0.7);
+        transform: translateY(0);
+      }
+    }
+
+    .portfolio-highlight-active {
+      animation: projectGlowHighlight 2.8s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+    }
+
+    /* Custom Scrollbar for Chat Window */
+    #ai-chat-messages::-webkit-scrollbar,
+    .no-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 4px;
+    }
+    #ai-chat-messages::-webkit-scrollbar-track,
+    .no-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #ai-chat-messages::-webkit-scrollbar-thumb,
+    .no-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    #ai-chat-messages::-webkit-scrollbar-thumb:hover,
+    .no-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased leading-relaxed min-h-screen flex flex-col">
@@ -267,7 +349,7 @@
       </div>
 
       <!-- PROJECT 01: 醫美產業分析專案 -->
-      <article class="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 sm:p-7 space-y-6 transition-all hover:border-primary-300">
+      <article id="project-medical-aesthetic" class="bg-slate-50/70 border border-slate-200 rounded-2xl p-5 sm:p-7 space-y-6 transition-all hover:border-primary-300">
         <!-- Project Title & Badges -->
         <div class="space-y-3">
           <div class="flex items-center flex-wrap gap-2">
@@ -677,6 +759,121 @@
     <p>© 2026 許益瑄 | 個人履歷與專案作品網站. All rights reserved.</p>
   </footer>
 
+  <!-- ========================================== -->
+  <!-- AI DIGITAL AVATAR CHATBOT WIDGET -->
+  <!-- ========================================== -->
+  <aside id="ai-chat-widget" class="no-print" aria-label="AI 履歷數位分身">
+    <!-- Floating Action Button (FAB) Container -->
+    <div id="ai-chat-fab-container" class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+      <!-- Tooltip prompt pill (shows initially on desktop) -->
+      <div id="ai-chat-tooltip" class="hidden sm:flex items-center gap-2.5 bg-slate-900/90 text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-xl border border-slate-700/80 backdrop-blur-md cursor-pointer transition-all duration-300 hover:bg-slate-900 transform hover:-translate-y-0.5">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
+        <span>嗨！我是<strong>許益瑄的 AI 數位分身</strong>，點我聊聊！</span>
+        <button id="ai-chat-tooltip-close" class="text-slate-400 hover:text-white ml-1 text-sm leading-none" title="關閉提示">&times;</button>
+      </div>
+
+      <!-- Main Trigger Floating Button -->
+      <button id="ai-chat-toggle-btn" class="relative group w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-primary-700 via-primary-600 to-indigo-600 text-white shadow-xl shadow-primary-600/35 hover:shadow-primary-600/55 flex items-center justify-center transition-all duration-300 transform hover:scale-105 active:scale-95 animate-chat-glow focus:outline-none focus:ring-4 focus:ring-primary-300" aria-expanded="false" aria-controls="ai-chat-window" title="開啟許益瑄的 AI 數位分身">
+        <!-- Online Indicator Badge -->
+        <span class="absolute top-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-xs"></span>
+        <!-- Bot Icon -->
+        <i id="ai-chat-fab-icon" class="fa-solid fa-robot text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
+      </button>
+    </div>
+
+    <!-- Chat Window Container -->
+    <div id="ai-chat-window" class="fixed bottom-6 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[410px] h-[610px] max-h-[85vh] bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300 ease-out transform scale-95 opacity-0 pointer-events-none translate-y-4">
+      
+      <!-- Chat Header -->
+      <div class="bg-gradient-to-r from-primary-900 via-primary-800 to-indigo-900 text-white px-4 py-3.5 flex items-center justify-between shadow-sm shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-500 p-0.5 shadow-md flex items-center justify-center text-white">
+              <i class="fa-solid fa-robot text-xl"></i>
+            </div>
+            <span class="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-emerald-400 border-2 border-primary-900 rounded-full"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="font-bold text-sm sm:text-base leading-tight">許益瑄 的 AI 數位分身</h3>
+              <span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>在線中</span>
+              </span>
+            </div>
+            <p class="text-[11px] text-primary-200/90 mt-0.5">企管專業 ✕ 醫美實務 ✕ 專案導覽</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1">
+          <!-- Reset Conversation Button -->
+          <button id="ai-chat-reset-btn" class="w-8 h-8 rounded-lg hover:bg-white/10 text-primary-200 hover:text-white flex items-center justify-center transition-colors text-xs" title="清空紀錄並重新開啟">
+            <i class="fa-solid fa-rotate-right"></i>
+          </button>
+          <!-- Minimize / Close Button -->
+          <button id="ai-chat-close-btn" class="w-8 h-8 rounded-lg hover:bg-white/10 text-primary-200 hover:text-white flex items-center justify-center transition-colors text-base" title="收合聊天視窗">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action Chips Section (膠囊標籤) -->
+      <div class="bg-slate-50/90 border-b border-slate-200/80 px-3.5 py-2.5 shrink-0">
+        <div class="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-1.5 px-0.5">
+          <span class="flex items-center gap-1 text-primary-900 font-bold">
+            <i class="fa-solid fa-bolt text-amber-500"></i>
+            <span>快速提問標籤</span>
+          </span>
+          <span class="text-[10px] text-slate-400">一鍵點選即問</span>
+        </div>
+        <div class="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar text-xs">
+          <button class="ai-chip-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white hover:bg-primary-50 text-slate-700 hover:text-primary-700 border border-slate-200 hover:border-primary-300 font-medium transition-all shadow-2xs hover:shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0" data-question="請自我介紹">
+            <span>💡</span>
+            <span>請自我介紹</span>
+          </button>
+          <button class="ai-chip-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white hover:bg-primary-50 text-slate-700 hover:text-primary-700 border border-slate-200 hover:border-primary-300 font-medium transition-all shadow-2xs hover:shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0" data-question="介紹你的產業分析專案">
+            <span>📊</span>
+            <span>介紹你的產業分析專案</span>
+          </button>
+          <button class="ai-chip-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white hover:bg-primary-50 text-slate-700 hover:text-primary-700 border border-slate-200 hover:border-primary-300 font-medium transition-all shadow-2xs hover:shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0" data-question="你的企管核心專長">
+            <span>🎯</span>
+            <span>你的企管核心專長</span>
+          </button>
+          <button class="ai-chip-btn whitespace-nowrap px-3 py-1.5 rounded-full bg-white hover:bg-primary-50 text-slate-700 hover:text-primary-700 border border-slate-200 hover:border-primary-300 font-medium transition-all shadow-2xs hover:shadow-xs active:scale-95 flex items-center gap-1.5 shrink-0" data-question="如何聯絡你">
+            <span>📬</span>
+            <span>如何聯絡你</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Body -->
+      <div id="ai-chat-messages" class="flex-grow overflow-y-auto p-4 space-y-3.5 text-xs sm:text-sm bg-gradient-to-b from-slate-50/40 via-white to-slate-50/30">
+        <!-- Messages will be dynamically rendered here -->
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="p-3 bg-white border-t border-slate-200/90 shrink-0">
+        <form id="ai-chat-form" class="flex items-center gap-2">
+          <input type="text" id="ai-chat-input" placeholder="輸入問題... (例如：專案、專長、經歷)" class="flex-grow px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all" autocomplete="off" />
+          <button type="submit" id="ai-chat-send-btn" class="w-10 h-10 rounded-xl bg-primary-600 hover:bg-primary-700 text-white flex items-center justify-center transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-sm hover:shadow active:scale-95 shrink-0" title="傳送訊息">
+            <i class="fa-solid fa-paper-plane text-xs sm:text-sm"></i>
+          </button>
+        </form>
+        <div class="flex items-center justify-between text-[10px] text-slate-400 mt-1.5 px-1">
+          <span class="flex items-center gap-1">
+            <i class="fa-solid fa-shield-halved text-primary-500"></i>
+            <span>純前端模擬 AI ｜ 零 API 依賴 ｜ 即開即用</span>
+          </span>
+          <span>按 Enter 傳送</span>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
   <!-- Chart.js Initialization Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -907,6 +1104,505 @@
         }
       });
     });
+
+    // ==============================================================
+    // AI DIGITAL AVATAR CHATBOT ENGINE (純前端 AI 數位分身對話系統)
+    // ==============================================================
+    (function () {
+      // Knowledge Base & Intelligent Matcher
+      const KNOWLEDGE_BASE = {
+        greeting: `你好！我是許益瑄的 AI 數位分身，隨時為您介紹 許益瑄的企管專業與產業專案成果，想了解什麼呢？`,
+        
+        intro: `您好！我是<strong>許益瑄</strong>的 AI 數位履歷分身！很高興為您服務。
+
+💼 <strong>【專業背景概述】</strong>
+目前就讀於<strong>萬能科技大學 企業管理系</strong>，同時在醫美診所擔任<strong>診所助理</strong>近 2 年（2024 年 12 月至今）。
+
+🎯 <strong>【求職目標職位】</strong>
+• 醫美診所助理
+• 診所行政人員
+• 顧客服務專員
+
+🌟 <strong>【核心競爭優勢】</strong>
+我擅長將企管所學的<strong>「顧客關係管理 (CRM)」</strong>、<strong>「服務流程優化」</strong>與<strong>「團隊協同合作」</strong>實質落實在醫美第一線服務中。具備高度同理心與熱忱，能在高節奏的診所現場提供細心、溫暖且值得信賴的專業支援！`,
+
+        portfolio: `很榮幸為您介紹許益瑄的產業專案研究成果！
+
+📊 <strong>【專案名稱】</strong>
+<strong>《2024–2026 台灣暨全球醫美產業市場趨勢與消費行為分析報告》</strong>
+結合企管系數據分析與醫美第一線服務實務，深獲肯定。
+
+🔍 <strong>【四大關鍵數據指標】</strong>
+1. 🌐 <strong>全球市場</strong>：年療程突破 <strong>3,490 萬+</strong> 件，非手術微整注射佔比逾 55%（ISAPS 統計）。
+2. 🇹🇼 <strong>台灣產值</strong>：年產值超過 <strong>NT$ 600 億</strong>，年複合成長率 ~9.5%，預估 2026 突破 800 億（TEJ 經濟新報）。
+3. 💉 <strong>微整雙核心</strong>：肉毒桿菌 (48.2%) 與玻尿酸 (27.5%) 合佔非手術醫美 <strong>75.7%</strong>（Allergan 美學報告）。
+4. 🛡️ <strong>決策關鍵</strong>：高達 <strong>42%</strong> 消費者首重醫師專業資歷與原廠正貨認證（OpView 大數據）。
+
+💡 <strong>【三大診所實務落地策略】</strong>
+• <strong>常態保養化</strong>：推動初診親切問卷與 LINE 預約回訪週期提醒。
+• <strong>原生美學</strong>：拒絕過度填充，前線細心記錄顧客自然無痕偏好。
+• <strong>信任經濟</strong>：主動展示原廠防偽 QR Code，落實 24-72 小時術後追蹤關懷。
+
+👇 <strong>點擊下方按鈕，我帶您直接參閱頁面中的完整專案報告與 4 大互動圖表！</strong>`,
+
+        skills: `許益瑄具備企管專業思維與第一線醫美實務經驗，核心專長分為四大面向：
+
+1. 🏥 <strong>【櫃檯接待與顧客引導】</strong>
+現場親切迎賓接待、電話預約排程登記、引導候診動線，具備同理心傾聽與顧客情緒安撫能力。
+
+2. 💬 <strong>【術後關心與顧客溝通】</strong>
+術後 24-72 小時主動貼心追蹤關懷、日常保養與衛教注意事項叮嚀，有效維護顧客滿意度與診所信賴感。
+
+3. 📋 <strong>【行政作業與病歷建檔】</strong>
+初複診基本資料登記建檔、醫療表單整理歸檔、候診區環境整潔與日常茶水備品細心管理。
+
+4. 💻 <strong>【辦公文書與數位工具】</strong>
+熟練操作 Word、Excel 資料登打建檔、Google 雲端表單/試算表應用，以及 LINE 官方帳號日常顧客諮詢應對。
+
+📈 <strong>【企管加值能力】</strong>
+結合萬能企管所學，將服務流程標準化 (SOP) 與顧客滿意度維護視角帶入日常庶務！`,
+
+        contact: `非常感謝您的詢問！許益瑄目前正<strong>積極尋求合適職缺</strong>，期待能為團隊貢獻所長：
+
+📍 <strong>【居住地區】</strong>：桃園市大園區
+📞 <strong>【聯絡電話】</strong>：09XX-XXX-XXX
+✉️ <strong>【電子郵件】</strong>：example@email.com
+📄 <strong>【履歷輸出】</strong>：可點擊網頁右上角的「列印 / 存為 PDF」按鈕快速下載完整履歷！
+
+歡迎隨時透過電話或 Email 聯繫面試安排，許益瑄會儘速回覆您！`,
+
+        experience: `許益瑄具備扎實的第一線醫美診所實務經驗：
+
+🏥 <strong>【工作經歷】</strong>：醫美診所 ｜ 診所助理
+📅 <strong>【服務期間】</strong>：2024 年 12 月 – 至今（近 2 年）
+⭐ <strong>【主要負責職掌】</strong>：
+1. <strong>櫃檯接待</strong>：現場迎賓、預約掛號登記、候診引導與動線分流。
+2. <strong>資料建檔</strong>：初複診顧客病歷建檔、資料庫登打核對與表單整理歸檔。
+3. <strong>術後關懷</strong>：術後主動關懷復原狀況、提供基礎衛教保養建議。
+4. <strong>環境維護</strong>：候診空間整潔度維持、茶水備品清點補充。
+
+在工作中維持親切細心、重視團隊合作與顧客體驗，深受同仁與顧客信任！`,
+
+        education: `許益瑄目前之學歷與進修背景如下：
+
+🎓 <strong>【就讀學校】</strong>：萬能科技大學 ｜ 企業管理系
+📚 <strong>【學位階段】</strong>：學士學位（在學進修中）
+📅 <strong>【入學時間】</strong>：2026 年 09 月
+
+💡 <strong>【學習收穫】</strong>：
+在學期間專注於<strong>顧客關係管理 (CRM)</strong>、<strong>服務業管理</strong>、<strong>商業數據分析</strong>與<strong>團隊溝通協調</strong>，並將理論知識實質應用於醫美診所接待與行政協作，持續精進自我！`,
+
+        autobiography: `許益瑄的自傳與工作態度核心亮點：
+
+🌟 <strong>【三大核心優勢】</strong>
+1. <strong>實務經驗與親切服務</strong>：近 2 年醫美第一線服務經驗，擅長傾聽與溝通，能快速安撫初診顧客不安情緒。
+2. <strong>持續進修與企管思維</strong>：就讀萬能企管系，以條理清晰的流程化思維應對繁雜預約與行政庶務。
+3. <strong>真誠細心與高度責任感</strong>：堅持「真誠、細心、同理心」服務態度，致力成為主管與同仁最信賴的得力助手！`,
+
+        fallback: `抱歉，我目前專注於為您介紹<strong>許益瑄</strong>的企管專業、醫美實務經歷與產業專案成果！
+
+建議您可以點選上方<strong>「快速提問標籤」</strong>，或直接詢問：
+• 「請自我介紹」
+• 「介紹你的產業分析專案」
+• 「你的企管核心專長」
+• 「如何聯絡你」
+• 「工作經歷」或「學歷背景」
+
+我很樂意隨時為您詳細說明！`
+      };
+
+      // Matcher Function
+      function matchAnswer(question) {
+        const q = question.trim().toLowerCase();
+        
+        // 1. Project / Portfolio
+        if (q.includes('專案') || q.includes('產業分析') || q.includes('作品') || q.includes('醫美報告') || q.includes('圖表') || q.includes('portfolio') || q.includes('project') || q.includes('研究') || q.includes('趨勢') || q.includes('isaps') || q.includes('tej')) {
+          return {
+            text: KNOWLEDGE_BASE.portfolio,
+            hasProjectJump: true
+          };
+        }
+
+        // 2. Self Intro
+        if (q.includes('自我介紹') || q.includes('簡介') || q.includes('是誰') || q.includes('介紹一下') || q.includes('你是誰') || q.includes('許益瑄') || q.includes('益瑄') || q.includes('大明') || q.includes('about') || q.includes('intro')) {
+          return { text: KNOWLEDGE_BASE.intro, hasProjectJump: false };
+        }
+
+        // 3. Core Competencies / Skills
+        if (q.includes('專長') || q.includes('技能') || q.includes('能力') || q.includes('企管') || q.includes('會什麼') || q.includes('skill') || q.includes('接待') || q.includes('文書') || q.includes('電腦')) {
+          return { text: KNOWLEDGE_BASE.skills, hasProjectJump: false };
+        }
+
+        // 4. Contact
+        if (q.includes('聯絡') || q.includes('電話') || q.includes('信箱') || q.includes('email') || q.includes('mail') || q.includes('哪裡') || q.includes('大園') || q.includes('面試') || q.includes('找你') || q.includes('contact')) {
+          return { text: KNOWLEDGE_BASE.contact, hasProjectJump: false };
+        }
+
+        // 5. Work Experience
+        if (q.includes('經歷') || q.includes('工作') || q.includes('經驗') || q.includes('幾年') || q.includes('診所') || q.includes('助理') || q.includes('職務') || q.includes('experience')) {
+          return { text: KNOWLEDGE_BASE.experience, hasProjectJump: false };
+        }
+
+        // 6. Education
+        if (q.includes('學歷') || q.includes('大學') || q.includes('學校') || q.includes('萬能') || q.includes('唸') || q.includes('畢業') || q.includes('教育') || q.includes('科系') || q.includes('education')) {
+          return { text: KNOWLEDGE_BASE.education, hasProjectJump: false };
+        }
+
+        // 7. Autobiography / Strengths
+        if (q.includes('自傳') || q.includes('優勢') || q.includes('特質') || q.includes('個性') || q.includes('為什麼') || q.includes('態度') || q.includes('亮點')) {
+          return { text: KNOWLEDGE_BASE.autobiography, hasProjectJump: false };
+        }
+
+        // 8. Greetings
+        if (q.includes('你好') || q.includes('您好') || q.includes('嗨') || q.includes('早安') || q.includes('午安') || q.includes('晚安') || q.includes('hello') || q.includes('hi')) {
+          return {
+            text: `您好！很高興遇見您！我是<strong>許益瑄的 AI 數位分身</strong>。您可以隨時詢問我許益瑄的<strong>企管核心專長</strong>、<strong>醫美診所助理實務經歷</strong>，或是參閱他深入研析的<strong>醫美產業分析專案</strong>！想先了解哪一部分呢？`,
+            hasProjectJump: false
+          };
+        }
+
+        // 9. Thanks
+        if (q.includes('謝謝') || q.includes('感謝') || q.includes('讚') || q.includes('棒') || q.includes('厲害') || q.includes('thx') || q.includes('thank')) {
+          return {
+            text: `不客氣！能為您服務是許益瑄的榮幸。若有更多想了解的專案細節或面試安排，隨時告訴我喔！😊`,
+            hasProjectJump: false
+          };
+        }
+
+        // Default Fallback
+        return { text: KNOWLEDGE_BASE.fallback, hasProjectJump: false };
+      }
+
+      // DOM Elements
+      const fabBtn = document.getElementById('ai-chat-toggle-btn');
+      const fabIcon = document.getElementById('ai-chat-fab-icon');
+      const chatWindow = document.getElementById('ai-chat-window');
+      const closeBtn = document.getElementById('ai-chat-close-btn');
+      const resetBtn = document.getElementById('ai-chat-reset-btn');
+      const chatMessages = document.getElementById('ai-chat-messages');
+      const chatForm = document.getElementById('ai-chat-form');
+      const chatInput = document.getElementById('ai-chat-input');
+      const sendBtn = document.getElementById('ai-chat-send-btn');
+      const chips = document.querySelectorAll('.ai-chip-btn');
+      const tooltip = document.getElementById('ai-chat-tooltip');
+      const tooltipClose = document.getElementById('ai-chat-tooltip-close');
+
+      let isOpen = false;
+      let isTyping = false;
+      let hasGreeted = false;
+
+      // Format Time
+      function getCurrentTimeStr() {
+        const now = new Date();
+        const hrs = String(now.getHours()).padStart(2, '0');
+        const mins = String(now.getMinutes()).padStart(2, '0');
+        return `${hrs}:${mins}`;
+      }
+
+      // Scroll to Bottom
+      function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      // Toggle Chat Window
+      function toggleChat(open) {
+        isOpen = (typeof open === 'boolean') ? open : !isOpen;
+
+        if (isOpen) {
+          // Open Window
+          chatWindow.classList.remove('scale-95', 'opacity-0', 'pointer-events-none', 'translate-y-4');
+          chatWindow.classList.add('scale-100', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+          fabBtn.setAttribute('aria-expanded', 'true');
+          fabBtn.classList.remove('animate-chat-glow');
+          fabIcon.classList.remove('fa-robot');
+          fabIcon.classList.add('fa-chevron-down');
+
+          // Hide Tooltip if visible
+          if (tooltip) {
+            tooltip.classList.add('hidden');
+          }
+
+          // Trigger Welcome greeting if first time
+          if (!hasGreeted) {
+            hasGreeted = true;
+            // Short delay for natural feel
+            setTimeout(() => {
+              renderAIMessage(KNOWLEDGE_BASE.greeting, false);
+            }, 300);
+          }
+
+          // Focus input on desktop
+          if (window.innerWidth >= 640) {
+            setTimeout(() => chatInput.focus(), 350);
+          }
+        } else {
+          // Close Window
+          chatWindow.classList.add('scale-95', 'opacity-0', 'pointer-events-none', 'translate-y-4');
+          chatWindow.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto', 'translate-y-0');
+          fabBtn.setAttribute('aria-expanded', 'false');
+          fabBtn.classList.add('animate-chat-glow');
+          fabIcon.classList.remove('fa-chevron-down');
+          fabIcon.classList.add('fa-robot');
+        }
+      }
+
+      // Render User Message
+      function renderUserMessage(text) {
+        const timeStr = getCurrentTimeStr();
+        const msgDiv = document.createElement('div');
+        msgDiv.className = 'flex justify-end items-end gap-2 text-right';
+        msgDiv.innerHTML = `
+          <div class="space-y-1 max-w-[82%]">
+            <div class="bg-gradient-to-r from-primary-600 to-indigo-600 text-white px-3.5 py-2.5 rounded-2xl rounded-tr-xs shadow-xs text-xs sm:text-sm text-left leading-relaxed break-words">
+              ${escapeHtml(text)}
+            </div>
+            <div class="text-[10px] text-slate-400 mr-1">${timeStr}</div>
+          </div>
+          <div class="w-6 h-6 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-xs shrink-0 mb-4">
+            <i class="fa-solid fa-user"></i>
+          </div>
+        `;
+        chatMessages.appendChild(msgDiv);
+        scrollToBottom();
+      }
+
+      // Show Typing Indicator
+      function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.id = 'ai-typing-indicator';
+        typingDiv.className = 'flex items-start gap-2.5';
+        typingDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-xs shadow-xs shrink-0 mt-0.5">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-white border border-slate-200/90 rounded-2xl rounded-tl-xs px-3.5 py-2.5 shadow-xs space-y-1 max-w-[85%]">
+            <div class="flex items-center gap-1.5 py-0.5 px-1">
+              <span class="w-2 h-2 rounded-full bg-primary-500 typing-dot inline-block"></span>
+              <span class="w-2 h-2 rounded-full bg-primary-500 typing-dot inline-block"></span>
+              <span class="w-2 h-2 rounded-full bg-primary-500 typing-dot inline-block"></span>
+            </div>
+          </div>
+        `;
+        chatMessages.appendChild(typingDiv);
+        scrollToBottom();
+      }
+
+      function removeTypingIndicator() {
+        const ind = document.getElementById('ai-typing-indicator');
+        if (ind) ind.remove();
+      }
+
+      // Render AI Message with Typewriter Simulation
+      function renderAIMessage(fullHtml, hasProjectJump = false) {
+        showTypingIndicator();
+        isTyping = true;
+        setInputsDisabled(true);
+
+        // Simulate realistic thinking delay
+        setTimeout(() => {
+          removeTypingIndicator();
+
+          const timeStr = getCurrentTimeStr();
+          const msgContainer = document.createElement('div');
+          msgContainer.className = 'flex items-start gap-2.5';
+
+          // Avatar
+          const avatar = document.createElement('div');
+          avatar.className = 'w-7 h-7 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-600 text-white flex items-center justify-center text-xs shadow-xs shrink-0 mt-0.5';
+          avatar.innerHTML = `<i class="fa-solid fa-robot"></i>`;
+
+          // Content Wrapper
+          const contentWrapper = document.createElement('div');
+          contentWrapper.className = 'space-y-1.5 max-w-[85%]';
+
+          // Bubble
+          const bubble = document.createElement('div');
+          bubble.className = 'bg-white border border-slate-200/90 text-slate-800 rounded-2xl rounded-tl-xs px-3.5 py-2.5 shadow-xs text-xs sm:text-sm leading-relaxed text-justify';
+
+          // Text content container
+          const textSpan = document.createElement('div');
+          textSpan.className = 'ai-text-content space-y-1.5';
+          bubble.appendChild(textSpan);
+
+          contentWrapper.appendChild(bubble);
+
+          // Timestamp
+          const timeDiv = document.createElement('div');
+          timeDiv.className = 'text-[10px] text-slate-400 ml-1';
+          timeDiv.textContent = timeStr;
+          contentWrapper.appendChild(timeDiv);
+
+          msgContainer.appendChild(avatar);
+          msgContainer.appendChild(contentWrapper);
+          chatMessages.appendChild(msgContainer);
+          scrollToBottom();
+
+          // Typewriter streaming effect
+          // Split into paragraphs for smooth and responsive streaming
+          const paragraphs = fullHtml.split('\n\n');
+          let pIndex = 0;
+
+          function streamNextParagraph() {
+            if (pIndex < paragraphs.length) {
+              const p = document.createElement('p');
+              p.className = 'fade-in';
+              p.innerHTML = paragraphs[pIndex].replace(/\n/g, '<br>');
+              textSpan.appendChild(p);
+              pIndex++;
+              scrollToBottom();
+              setTimeout(streamNextParagraph, 70);
+            } else {
+              // Finished streaming text
+
+              // Add Project Jump button if applicable
+              if (hasProjectJump) {
+                const btnContainer = document.createElement('div');
+                btnContainer.className = 'pt-2 mt-1 border-t border-slate-100 flex flex-col gap-1.5';
+                btnContainer.innerHTML = `
+                  <button type="button" class="ai-project-jump-btn w-full px-3.5 py-2 rounded-xl bg-gradient-to-r from-primary-600 via-primary-700 to-indigo-600 hover:from-primary-700 hover:to-indigo-700 text-white font-semibold text-xs shadow-md shadow-primary-600/25 flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
+                    <i class="fa-solid fa-chart-line text-xs"></i>
+                    <span>🚀 立即跳轉至「產業分析專案展示區」</span>
+                  </button>
+                  <span class="text-[10px] text-slate-400 text-center">自動平滑滾動並高亮鎖定專案成果區塊</span>
+                `;
+                bubble.appendChild(btnContainer);
+
+                // Attach click event
+                const jumpBtn = btnContainer.querySelector('.ai-project-jump-btn');
+                jumpBtn.addEventListener('click', function () {
+                  window.aiChatbotJumpToProject();
+                });
+                scrollToBottom();
+              }
+
+              isTyping = false;
+              setInputsDisabled(false);
+              chatInput.focus();
+            }
+          }
+
+          streamNextParagraph();
+
+        }, 400);
+      }
+
+      // Enable/Disable Inputs during AI typing
+      function setInputsDisabled(disabled) {
+        chatInput.disabled = disabled;
+        sendBtn.disabled = disabled;
+        chips.forEach(chip => chip.disabled = disabled);
+      }
+
+      // Helper to escape HTML for user inputs
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      // Handle Submit Question
+      function handleQuestion(text) {
+        if (!text || !text.trim() || isTyping) return;
+        const q = text.trim();
+        chatInput.value = '';
+
+        // 1. Render User Message
+        renderUserMessage(q);
+
+        // 2. Match Answer from Knowledge Base
+        const answerObj = matchAnswer(q);
+
+        // 3. Render AI Response
+        renderAIMessage(answerObj.text, answerObj.hasProjectJump);
+      }
+
+      // Reset Conversation
+      function resetConversation() {
+        chatMessages.innerHTML = '';
+        hasGreeted = true;
+        renderAIMessage(KNOWLEDGE_BASE.greeting, false);
+      }
+
+      // Global Project Jump Link Function
+      window.aiChatbotJumpToProject = function () {
+        const target = document.getElementById('project-medical-aesthetic') || document.getElementById('portfolio');
+        if (!target) return;
+
+        // On mobile, minimize chat window so user can clearly view the charts
+        if (window.innerWidth < 640) {
+          toggleChat(false);
+        }
+
+        // Smooth scroll to target
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+
+        // Trigger dynamic glow highlight animation
+        target.classList.remove('portfolio-highlight-active');
+        void target.offsetWidth; // trigger reflow
+        target.classList.add('portfolio-highlight-active');
+
+        // Remove animation class after completion
+        setTimeout(() => {
+          target.classList.remove('portfolio-highlight-active');
+        }, 3000);
+      };
+
+      // Event Listeners
+      fabBtn.addEventListener('click', () => toggleChat());
+      closeBtn.addEventListener('click', () => toggleChat(false));
+      resetBtn.addEventListener('click', resetConversation);
+
+      // Tooltip actions
+      if (tooltip) {
+        tooltip.addEventListener('click', (e) => {
+          if (e.target !== tooltipClose) {
+            toggleChat(true);
+          }
+        });
+      }
+      if (tooltipClose) {
+        tooltipClose.addEventListener('click', (e) => {
+          e.stopPropagation();
+          tooltip.classList.add('hidden');
+        });
+      }
+
+      // Quick Chips Click
+      chips.forEach(chip => {
+        chip.addEventListener('click', function () {
+          const q = this.getAttribute('data-question');
+          if (q) handleQuestion(q);
+        });
+      });
+
+      // Form Submit
+      chatForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        handleQuestion(chatInput.value);
+      });
+
+      // Keyboard Esc to Close
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen) {
+          toggleChat(false);
+        }
+      });
+
+      // Auto hide tooltip after 10 seconds to avoid blocking content
+      setTimeout(() => {
+        if (tooltip && !isOpen) {
+          tooltip.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+          setTimeout(() => tooltip.classList.add('hidden'), 500);
+        }
+      }, 10000);
+
+    })();
   </script>
 </body>
 </html>
